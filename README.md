@@ -1,6 +1,6 @@
 # second-brain
 
-An [Agent Skill](https://agentskills.io) for maintaining a personal LLM-powered knowledge base. Inspired by [Andrej Karpathy's LLM wiki idea](https://x.com/karpathy/status/1834497018094227501): **the LLM writes and maintains the wiki; the human reads and asks questions.**
+An [Agent Skill](https://agentskills.io) for maintaining a personal LLM-powered knowledge base. Inspired by [Andrej Karpathy's LLM wiki idea](https://x.com/karpathy/status/2039805659525644595): **the LLM writes and maintains the wiki; the human reads and asks questions.**
 
 Sources go into `raw/`. The skill compiles them into articles under `wiki/`. The agent orchestrates ingest, compile, query, lint, migration, and vault-health reporting. Python helpers in `tools/` provide search (BM25 + FAISS), graph traversal (NetworkX), a Textual TUI dashboard, and a watchdog-based auto-ingest daemon.
 
@@ -11,7 +11,7 @@ Works with any skill-compatible agent (Claude Code, Cursor, Gemini CLI, OpenCode
 **Recommended — via [skills.sh](https://skills.sh):**
 
 ```bash
-npx add-skill dawnn07/second-brain
+npx skills add dawnn07/second-brain
 ```
 
 **Manual install (Claude Code):**
