@@ -1,0 +1,50 @@
+[project]
+name = "second-brain-tools"
+version = "0.1.0"
+description = "Python helpers for the Karpathy LLM Wiki skill (search, graph, TUI)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "second-brain contributors" }]
+keywords = ["llm", "knowledge-base", "wiki", "claude", "search", "graph"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=2.7.0",
+    "faiss-cpu>=1.8.0",
+    "networkx>=3.2",
+    "textual>=0.60",
+    "watchdog>=4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/YOUR-USER/second-brain"
+Issues = "https://github.com/YOUR-USER/second-brain/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+wiki-search = "tools.search:main"
+wiki-graph = "tools.graph:main"
+wiki-dashboard = "tools.dashboard:main"
+wiki-watch = "tools.watcher:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["tools*"]

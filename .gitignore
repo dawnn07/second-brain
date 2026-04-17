@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Search index is a derived artifact, rebuilt from wiki/
+search_index/
+
+# pytest
+.pytest_cache/
+
+# packaging
+*.egg-info/
+build/
+dist/
+
+docs/

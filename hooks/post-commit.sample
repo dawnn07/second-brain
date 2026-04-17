@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Sample post-commit hook for the Karpathy LLM Wiki skill.
+#
+# Install:  cp hooks/post-commit.sample .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+#
+# Behavior: when the commit message starts with "raw:" or "source:", kick off
+# an ingest for every newly-added file under raw/ in the last commit.
+
+set -euo pipefail
+
+msg="$(git log -1 --pretty=%B)"
+case "$msg" in
+    raw:*|source:*) ;;
+    *) exit 0 ;;
+esac
+
+added=$(git diff-tree --no-commit-id --name-status --diff-filter=A -r HEAD \
+    | awk '$1=="A" && $2 ~ /^raw\// { print $2 }')
+
+if [ -z "$added" ]; then
+    exit 0
+fi
+
+while IFS= read -r file; do
+    [ -z "$file" ] && continue
+    echo "[post-commit] auto-ingest: $file"
+    claude -p "ingest $file" || echo "[post-commit] ingest failed for $file"
+done <<< "$added"
