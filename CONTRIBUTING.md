@@ -10,7 +10,6 @@ references/        # Template frontmatter/format for raw, article, archive, inde
 tools/             # Python helpers (search, graph, dashboard, watcher)
 hooks/             # Shell hook templates
 tests/             # Pytest unit + integration tests
-docs/superpowers/  # Plans and specs for historical milestones
 examples/          # Sample wikis
 ```
 
@@ -78,5 +77,4 @@ If those commands succeed, your change hasn't broken the basic flow.
 
 - Keep the diff small. Split unrelated changes into separate PRs.
 - Every skill-level change should include an updated test or sample where appropriate.
-- Link to the plan in `docs/superpowers/plans/` if your PR implements a milestone step.
 - Describe the behavior change in the PR body. "Why" matters more than "what".
